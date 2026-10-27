@@ -95,16 +95,20 @@ Controller（路由器守护进程）
 .
 ├── README.md
 ├── LICENSE                # MIT
-├── CONTRIBUTING.md        # 贡献与漏洞披露规范
+├── CONTRIBUTING.md        # 贡献指南
+├── SECURITY.md            # 安全政策与私密漏洞披露
 ├── .gitignore
+├── .github/
+│   └── workflows/
+│       └── ci.yml         # CI：push/PR 自动运行原型全部断言
 ├── docs/
 │   ├── feasibility.md     # 可行性论证（核心）
-│   ├── architecture.md    # 系统架构
+│   ├── architecture.md    # 系统架构（含主副路由多 AP 同步）
 │   ├── protocol.md        # 协议规范（注册/预约定/应用/老设备）
 │   ├── threat-model.md    # 威胁模型（聚焦抓包密度效应）
 │   ├── related-work.md    # 已有工作对比（诚实定位）
 │   └── roadmap.md         # 路线图
-└── prototype/            # 零依赖 Python 参考原型
+└── prototype/             # 零依赖 Python 参考原型（概念演示，非生产代码）
     ├── README.md
     ├── crypto_core.py     # KDF / 设备小秘密 / 信封加密
     ├── controller.py      # 模拟路由器（Controller）
