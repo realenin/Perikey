@@ -22,3 +22,6 @@ build/
 *.pem
 secrets.env
 .state/
+
+# WorkBuddy workspace internals
+.workbuddy/
