@@ -22,6 +22,20 @@ python3 demo.py
 9. 二次轮换后旧密码失效（前向隔离）。
 10. 密度效应：设备越多，抓包成功率越高（印证使用者 Kali 观察）。
 
+## 这是一个概念演示，不是生产代码
+
+`demo.py` 与 `controller.py` / `device.py` / `crypto_core.py` 全部运行在**内存模拟**中：设备 = dict，网络 = 函数调用，**没有真实 socket、没有真实 hostapd、没有真实 Wi-Fi 硬件**。它的唯一目的是证明「换密前预约定（PRA）+ 老设备独立长密码」这套逻辑端到端可行，方便你（和非专业读者）直观看懂流程。
+
+### 真正落地还需要做（TODO）
+
+- [ ] 对接真实 OpenWrt `hostapd`，通过 `wpa_psk_file` 注入主密码 `K'` 与老设备密码 `L_i`
+- [ ] 把内存 `DSecret` 注册表换成持久化存储（UCI / SQLite），并考虑设备离线时的密钥恢复
+- [ ] 用真实网络通道（HTTP / mDNS / CoAP）替代函数调用，处理重试、丢包、ACK 超时
+- [ ] 设备端 agent：让手机 / PC / IoT 在系统层真正接收并应用 `K'` 自动重连
+- [ ] **主副路由同步**：多 AP 场景下保证主副路由在约定时刻一致切换 `K'`（见 `../docs/architecture.md` §6）
+- [ ] 替换 `crypto_core.py` 的 SHA-256 密钥流为 `HKDF-SHA256` + `AES-256-GCM`
+- [ ] 引入真实 2FA（TOTP / WebAuthn）到管理平面
+
 ## 重要免责
 
 `crypto_core.py` 使用 **SHA-256 密钥流**仅为演示协议流程，**非生产级加密**。
