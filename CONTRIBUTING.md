@@ -14,7 +14,7 @@
 
 ## 3. 安全漏洞披露
 
-**请勿在公开 Issue 中披露具体可利用的漏洞。** 请通过 `security@example.com`（占位）私下联系维护者，给出复现步骤与影响评估。我们将在 90 天内协调修复并公开致谢。
+**请勿在公开 Issue 中披露具体可利用的漏洞。** 请使用 GitHub 的私密漏洞报告（仓库 **Security → Report a vulnerability**）提交，附复现步骤与影响评估，详见 [SECURITY.md](SECURITY.md)。我们将在 90 天内协调修复并公开致谢。
 
 ## 4. 文档与代码同步
 

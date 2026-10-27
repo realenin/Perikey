@@ -2,9 +2,10 @@
 
 > **Peri**odic **Key** rotation & distribution for home Wi-Fi —— 让定期更换 WiFi 密码不再需要逐台重连，并削弱「设备越多越易被抓包破解」的助攻效应。
 
-[![Status: Concept](https://img.shields.io/badge/status-concept-yellow)]()
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue)]()
-[![Platform: OpenWrt](https://img.shields.io/badge/platform-OpenWrt-orange)]()
+[![Status: Concept / RFC draft](https://img.shields.io/badge/status-concept--RFC--draft-yellow)](docs/roadmap.md)
+[![CI](../../actions/workflows/ci.yml/badge.svg)](../../actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![Platform: OpenWrt](https://img.shields.io/badge/platform-OpenWrt-orange)](docs/architecture.md)
 
 ---
 
@@ -122,10 +123,12 @@ python3 demo.py
 
 原型演示：设备首次联网建立 `DSecret` → 使用者设新密码 → 路由器**换密前**逐台加密下发 → 模拟「重启」应用新密码 → 设备用本地新密码自动重连 → 验证「仅持旧握手包的外部攻击者」拿不到新密码；并演示老设备独立长密码路径。
 
+该演示同时作为 **CI 冒烟测试**自动运行（`.github/workflows/ci.yml`）——仓库页面上的绿勾即「原型当前可完整跑通」的公开证明。
+
 ## 10. 当前状态与路线图
 
 概念设计 + 参考原型阶段。下一步：将原型逻辑移植为 OpenWrt 守护进程并对接 `hostapd` 的 `wpa_psk_file`（见 [`docs/roadmap.md`](docs/roadmap.md)）。
 
 ## 11. 许可证
 
-[MIT](LICENSE)。发布前请将作者信息替换为你的 GitHub 身份。
+[MIT](LICENSE) © PeriKey Contributors。
